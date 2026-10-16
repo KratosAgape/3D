@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model Viewer</title>
    
-    <!-- Google's Model Viewer component -->
+    <!-- 1. Import Google's Model Viewer component -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
+
+    <!-- 2. Configure the Meshopt Decoder BEFORE the model loads -->
+    <script type="module">
+        const ModelViewerElement = customsElements?.get('model-viewer') || window.customElements.get('model-viewer');
+        
+        if (ModelViewerElement) {
+            // This provides the missing decoder required by your compressed .glb file
+            ModelViewerElement.meshoptDecoderLocation = 'https://unpkg.com/meshoptimizer@0.17.0/meshopt_decoder.js';
+        }
+    </script>
 
     <style>
         body {
@@ -31,9 +41,8 @@
 <body>
 
     <!-- 
-      - Make sure "test.glb" and "wooden_studio_08_4k.hdr" are 
-        in the exact same folder as this HTML file!
-      - Removed the manual scale="0.1 0.1 0.1" so it fits nicely.
+      - The custom scripts tag from your previous code has been removed.
+      - Ensure 'test.glb' and 'wooden_studio_08_4k.hdr' exist in this folder!
     -->
     <model-viewer 
         src="test.glb" 
