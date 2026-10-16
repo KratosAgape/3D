@@ -5,12 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model Viewer</title>
     <script type="importmap">
-  {
-    "imports": {
-      "three": "https://unpkg.com",
-      "three/addons/": "https://unpkg.com"
-    }
-  }
+  import { HDRLoader } from 'three/examples/jsm/loaders/HDRLoader.js';
+const hdrLoader = new HDRLoader();
 </script>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.js"></script>
 
